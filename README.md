@@ -49,13 +49,34 @@ The Next thing we can do is analying each important feature:
         Location Group:Created 11 location group based on the distance from City . Keep in mind distance from City can never tell price is low or high as the proximity to airport and other facilities also will play a key role in the price.
           
  5) Removing outliers:
+ 
       a) Either we can remove using IQR method :The data points which fall below Q1 – 1.5 IQR or above Q3 + 1.5 IQR are outliers.
-         This was removing a quite a good amount of rows from teh datset and the prediction accuracy was less.
+      
+         This was removing a quite a good amount of rows from the datset and the prediction accuracy was less.
          
       b) identify key outliers and treat them . 
+      
           for eg: 2 BHK rent greater than 50000 doesnt sound real . so treat those values greater than 50000  by replacing with mean value based on location group.
-          
           df.groupby('loc_dist_gp')['avg_2bhk_rent'].mean()
       
-        
-    
+ Data cleaning is not limited to above . It can be extended further .
+ 6) Next important steps are:
+ 
+      a) Dummy encoding categorical variables
+      b) scaling the numerical variables
+      
+7) Model Building .
+      
+      Following Regression method are tried and XGB regression was showing minimal loss.
+      
+      a) Lasso Regression
+      
+      b) Ridge Regression
+      
+      c) Elastic Net Regression
+      
+      d) Ensemble - Voting
+      
+      e) Random Forest Regressor
+      
+      f) XGB Regression 
