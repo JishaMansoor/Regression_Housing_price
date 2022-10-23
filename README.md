@@ -60,6 +60,7 @@ The Next thing we can do is analying each important feature:
           df.groupby('loc_dist_gp')['avg_2bhk_rent'].mean()
       
  Data cleaning is not limited to above . It can be extended further .
+ 
  6) Next important steps are:
  
       a) Dummy encoding categorical variables
@@ -80,3 +81,5 @@ The Next thing we can do is analying each important feature:
       e) Random Forest Regressor
       
       f) XGB Regression 
+      
+      Based on different model analysis ,Distance from city with in 3KM,6KM,  4 and 5 BHK room type, total square feet ,number of bathrooms plays a major role in the prediction
