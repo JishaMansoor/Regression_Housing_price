@@ -5,6 +5,7 @@ Following are the Features for the house prediction in the dataset provided.
 'ID', 'area_type', 'availability', 'location', 'size', 'society','total_sqft', 'bath', 'balcony'.
 'price' being the target or dependent variable.
 
+## Dealing with unwanted features
 Identiying unwanted features can be done through Univariate and Multivariate analysis using plots or other methods. 
 Few common checks I do for quick analysis are :
 1) Unique identifier columns like ID can be removed as it doesnot give any relevant information for the model prediction.    
@@ -14,6 +15,7 @@ Few common checks I do for quick analysis are :
 
 Based on the above 'society','availability','area_type','ID' are unwanted features for the prediction.
 
+## Dealing with incorrect data
 The Next thing we can do is analying each important feature:
 1) Identify mis-spelled or similar named entries and correct it.
 	  for eg: incase of 'size' feature we can understand that it is talking about room size and can use value_counts() methods to identify the unique entries. if there are entries implying same but spelled differently like "Bedroom","BHK" combine those by replacing "Bedroom" with "BHK". Few entries might have mis-spelled like "RK" instead of "BHK"
@@ -21,7 +23,8 @@ The Next thing we can do is analying each important feature:
     for eg: "total_sqft" which is indeed a key feature for the price prediction should have same unit entries. For simplicity I have removed the measurement unit from the entry and kept as numerical field.
     But detailed analysis is pointing out that coverting the "Acres" or "cents" etc to square feet value could have given better data.
     Some enries are showing in ranges which also should be trated and converted ton sqft value.
-    
+
+## Missing Value Treatment    
 3) Now let us do the missing value treatment:
 
     a) Dropping is easiest and simplest .My approach is Drop the row only if many features of that row is null.
@@ -36,7 +39,8 @@ The Next thing we can do is analying each important feature:
         df.groupby('size')['balcony'].max()
         
     d) The same concept is used for test data
-   
+    
+ ## Utilizing Extra data available  
  4) Next step we can do is utilize the extra dataset provided .'Distance from city center' and 'average rent' .The prediction dataset and the supporting dataset have 'location' field as common. 
         Clean the 'location' feild using stripping and split functions.
         Remove the duplicate entries in all the datasets.
@@ -47,8 +51,8 @@ The Next thing we can do is analying each important feature:
         Room Group: Room numbers 1 to 8 are treated individually and greater than 8 rooms are treated as 'Large BHK' group
         
         Location Group:Created 11 location group based on the distance from City . Keep in mind distance from City can never tell price is low or high as the proximity to airport and other facilities also will play a key role in the price.
-          
- 5) Removing outliers:
+
+## Removing Outliers
  
       a) Either we can remove using IQR method :The data points which fall below Q1 – 1.5 IQR or above Q3 + 1.5 IQR are outliers.
       
@@ -61,12 +65,12 @@ The Next thing we can do is analying each important feature:
       
  Data cleaning is not limited to above . It can be extended further .
  
- 6) Next important steps are:
- 
-      a) Dummy encoding categorical variables
-      b) scaling the numerical variables
+ ## Encoding and Scaling
+      Following steps is done :
+      a) Dummy encoding categorical variables : pandas get_dummies()
+      b) scaling the numerical variables : sklearn.preprocessing.StandardScaler()
       
-7) Model Building .
+## Model Building .
       
       Following Regression method are tried and XGB regression was showing minimal loss.
       
