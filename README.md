@@ -1,8 +1,10 @@
 # Regression_Housing_price
 The first step in any model building is understanding the data you have.Majority of the time the data received will have missing values ,
 unwanted features, duplicates and outliers. 
-Following are the Features for the house prediction in the dataset provided.
+Following are the Features for the house prediction in the dataset provided:
+
 'ID', 'area_type', 'availability', 'location', 'size', 'society','total_sqft', 'bath', 'balcony'.
+
 'price' being the target or dependent variable.
 
 ## Dealing with unwanted features
@@ -30,12 +32,16 @@ The Next thing we can do is analying each important feature:
     a) Dropping is easiest and simplest .My approach is Drop the row only if many features of that row is null.
     
     b) Another simplest way is Fill the categorical features missing value using Mode and numerical value using median or mean methods
+    
        'size' and 'bath' features missed value filling is using the mode().
        
     c) For the dataset received , instead of simply taking mean or median ,approach used is creating groups and get the mean or median or mode out of that group.
+    
        'total_sqft' field  has good relation with room size. So for filling the missing value, we can use the mean sqft value of the room size it belong to.
-        eg: df.groupby('size')['total_sqft'].mean()
+        df.groupby('size')['total_sqft'].mean()
+	
         Similary for balcony used max() number of balconies for the room group. 
+	
         df.groupby('size')['balcony'].max()
         
     d) The same concept is used for test data
@@ -46,6 +52,7 @@ The Next thing we can do is analying each important feature:
         Remove the duplicate entries in all the datasets.
         Then do left join the datasets using 'location. Now we will have 'dist_from_city', and 'avg_2bhk_rent' also as inportant features.
         Merging of the three dataset has bring more null values . since the distance from city and average rent has key importance in the prediction, I took the binning approach.
+	
    'Room group" and 'location group'
    
         Room Group: Room numbers 1 to 8 are treated individually and greater than 8 rooms are treated as 'Large BHK' group
