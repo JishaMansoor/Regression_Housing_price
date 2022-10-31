@@ -52,12 +52,12 @@ The Next thing we can do is analying each important feature:
         Remove the duplicate entries in all the datasets.
         Then do left join the datasets using 'location. Now we will have 'dist_from_city', and 'avg_2bhk_rent' also as inportant features.
         Merging of the three dataset has bring more null values . since the distance from city and average rent has key importance in the prediction, I took the binning approach.
-	
-   'Room group" and 'location group'
+## Feature Engineering using Binning
+        Grouping or Binning is a feature engineering techinque used to make large number of continous or categorical columns in to smaller number of values by grouping them based on some range. Incase of house prediction two groups are created : 'Room group' and 'location group'
    
-        Room Group: Room numbers 1 to 8 are treated individually and greater than 8 rooms are treated as 'Large BHK' group
+        Room Group: Room numbers 1 to 8 are treated individually and greater than 8 rooms are treated as 'Large BHK' group. 
         
-        Location Group:Created 11 location group based on the distance from City . Keep in mind distance from City can never tell price is low or high as the proximity to airport and other facilities also will play a key role in the price.
+        Location Group:Created 11 location group based on the distance from City . Keep in mind distance from City alone cannot tell price is low or high as the proximity to airport and other facilities also plays a key role in the price.
 
 ## Removing Outliers
  
@@ -93,4 +93,4 @@ The Next thing we can do is analying each important feature:
       
       f) XGB Regression 
       
-      Based on different model analysis ,Distance from city with in 3KM,6KM,  4 and 5 BHK room type, total square feet ,number of bathrooms plays a major role in the prediction
+      Based on different model analysis ,Distance from city with in 3Km,6Km,  4 and 5 BHK room type, total square feet ,number of bathrooms plays a major role in the prediction
